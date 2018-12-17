@@ -79,7 +79,6 @@
       <ResourceName>Menus.ctmenu</ResourceName>
       <SubType>Designer</SubType>
     </VSCTCompile>
-    <Content Include="index.html" />
     <Content Include="Resources\DeployClientPlugin.png" />
     <Content Include="Resources\DeployPluginPackage.ico" />
     <Content Include="Resources\DeployServerPlugin.png" />
