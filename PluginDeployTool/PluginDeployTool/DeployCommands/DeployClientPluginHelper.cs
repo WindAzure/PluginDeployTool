@@ -18,7 +18,9 @@ namespace PluginDeployTool.DeployCommands
             CopyFile(clientPluginOutputFilePath, clientInstallFilePath);
 
             fileInfo.Refresh();
-            return DateTime.Compare(fileInitWriteDateTime, fileInfo.LastWriteTimeUtc) < 0 ? "Success!!" : "Failed!! ( File didn't changed )";
+            string successMessage = string.Format("Copy {0} Success!", clientInstallFilePath);
+            string failMessage = string.Format("Copy {0} Failed! ( File didn't changed )", clientInstallFilePath);
+            return DateTime.Compare(fileInitWriteDateTime, fileInfo.LastWriteTimeUtc) < 0 ? successMessage : failMessage;
         }
         private string GetClientPluginOutputPath()
         {

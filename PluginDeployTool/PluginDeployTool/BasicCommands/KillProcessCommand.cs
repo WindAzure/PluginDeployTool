@@ -16,11 +16,11 @@ namespace PluginDeployTool.BasicCommands
                 m_mode = value;
                 if(m_mode == Mode.Server)
                 {
-                    m_targetProcessNames = new List<string> { "PluginServer", "PLUGIN~1", "notepad" };
+                    m_targetProcessNames = new List<string> { "PluginServer", "PLUGIN~1"};
                 }
                 else
                 {
-                    m_targetProcessNames = new List<string> { "VAST2", "notepad" };
+                    m_targetProcessNames = new List<string> { "VAST2" };
                 }
             }
         }
@@ -35,6 +35,7 @@ namespace PluginDeployTool.BasicCommands
             foreach (var process in processes)
             {
                 process.Kill();
+                process.WaitForExit();
             }
         }
 

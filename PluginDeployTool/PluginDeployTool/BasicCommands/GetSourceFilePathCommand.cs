@@ -50,6 +50,8 @@ namespace PluginDeployTool.BasicCommands
             foreach (Project project in dTE.Solution.Projects)
             {
                 ConfigurationManager configManager = project.ConfigurationManager;
+                if (configManager == null) continue;
+
                 Configuration config = configManager.ActiveConfiguration;
                 foreach (OutputGroup group in config.OutputGroups)
                 {

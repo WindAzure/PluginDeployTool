@@ -18,8 +18,7 @@ namespace PluginDeployTool.BasicCommands
         
         public override void Execute()
         {
-            //string targetDirectory = (string)Registry.GetValue("HKEY_LOCAL_MACHINE\\Software\\Wow6432Node\\VIVOTEK, Inc.\\VAST", "INSTALL_PATH", null);
-            string targetDirectory = @"C:\Program Files (x86)\VIVOTEK Inc\VAST";
+            string targetDirectory = (string)Registry.GetValue("HKEY_LOCAL_MACHINE\\Software\\Wow6432Node\\VIVOTEK, Inc.\\VAST", "INSTALL_PATH", null);
             CheckTargetDirectoryExist(targetDirectory);
 
             GetSourceFilePathCommand getSourceFilePathCmd = new GetSourceFilePathCommand
