@@ -1,4 +1,4 @@
-﻿using PluginDeployTool.BasicCommands;
+using PluginDeployTool.BasicCommands;
 using System;
 using System.IO;
 
@@ -37,7 +37,7 @@ namespace PluginDeployTool.DeployCommands
             }
             catch (Exception e)
             {
-                throw new Exception("GetServerPluginOutputPath Failed => " + e.Message);
+                throw new Exception("GetClientPluginOutputPath Failed => " + e.Message);
             }
 
             return getSourceFilePathCmd.FilePath;
