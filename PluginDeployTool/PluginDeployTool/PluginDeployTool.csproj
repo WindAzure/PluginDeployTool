@@ -56,12 +56,12 @@
   <ItemGroup>
     <Compile Include="BasicCommands\Command.cs" />
     <Compile Include="BasicCommands\CopyFileCommand.cs" />
-    <Compile Include="DeployCommands\DeployClientPluginHelper.cs" />
-    <Compile Include="DeployCommands\DeployServerPluginHelper.cs" />
-    <Compile Include="BasicCommands\GetSourceFilePathCommand.cs" />
-    <Compile Include="BasicCommands\GetTargetFilePathCommand.cs" />
+    <Compile Include="BasicCommands\CommandFactory.cs" />
+    <Compile Include="BasicCommands\DualTypeCommand.cs" />
+    <Compile Include="BasicCommands\GetApplicationInstallPathCommand.cs" />
+    <Compile Include="DeployCommands\DeployPluginCommand.cs" />
+    <Compile Include="BasicCommands\GetProjectOutputPathCommand.cs" />
     <Compile Include="BasicCommands\KillProcessCommand.cs" />
-    <Compile Include="BasicCommands\Mode.cs" />
     <Compile Include="DeployCommands\DeployClientPlugin.cs" />
     <Compile Include="DeployPluginPackage.cs" />
     <Compile Include="DeployCommands\DeployServerPlugin.cs" />

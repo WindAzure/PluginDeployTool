@@ -5,17 +5,23 @@ namespace PluginDeployTool.BasicCommands
 {
     class CopyFileCommand : Command
     {
-        public CopyFileCommand(string sourceFileFullPath, string targetFileFullPath) : base()
+        public string SourceFileFullPath
         {
-            m_sourceFileFullPath = sourceFileFullPath;
-            m_targetFileFullPath = targetFileFullPath;
+            get;
+            set;
+        }
+
+        public string TargetFileFullPath
+        {
+            get;
+            set;
         }
 
         public override void Execute()
         {
             try
             {
-                File.Copy(m_sourceFileFullPath, m_targetFileFullPath, true);
+                File.Copy(SourceFileFullPath, TargetFileFullPath, true);
             }
             catch (UnauthorizedAccessException)
             {
@@ -26,8 +32,5 @@ namespace PluginDeployTool.BasicCommands
                 throw e;
             }
         }
-
-        private string m_sourceFileFullPath = "";
-        private string m_targetFileFullPath = "";
     }
 }

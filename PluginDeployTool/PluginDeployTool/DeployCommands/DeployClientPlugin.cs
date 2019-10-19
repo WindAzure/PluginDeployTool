@@ -87,9 +87,13 @@ namespace PluginDeployTool.DeployCommands
         {
             ThreadHelper.ThrowIfNotOnUIThread();
 
-            DeployClientPluginHelper helper = new DeployClientPluginHelper();
-            string executeResultMessage = helper.Execute();
-            VsShellUtilities.ShowMessageBox(this.package, executeResultMessage, "", OLEMSGICON.OLEMSGICON_INFO, OLEMSGBUTTON.OLEMSGBUTTON_OK, OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+            var deployPluginCommand = new DeployPluginCommand
+            {
+                Mode = BasicCommands.Mode.Client
+            };
+            deployPluginCommand.Execute();
+
+            VsShellUtilities.ShowMessageBox(this.package, deployPluginCommand.ExecuteResultMessage, "", OLEMSGICON.OLEMSGICON_INFO, OLEMSGBUTTON.OLEMSGBUTTON_OK, OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
         }
     }
 }

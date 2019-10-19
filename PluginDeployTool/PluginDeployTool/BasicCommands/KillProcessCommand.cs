@@ -3,33 +3,14 @@ using System.Linq;
 
 namespace PluginDeployTool.BasicCommands
 {
-    class KillProcessCommand : Command
+    class KillProcessCommand : DualTypeCommand
     {
-        public Mode Mode
-        {
-            get
-            {
-                return m_mode;
-            }
-            set
-            {
-                m_mode = value;
-                if(m_mode == Mode.Server)
-                {
-                    m_targetProcessNames = new List<string> { "PluginServer", "PLUGIN~1"};
-                }
-                else
-                {
-                    m_targetProcessNames = new List<string> { "VAST2" };
-                }
-            }
-        }
-
         public override void Execute()
         {
-            List<System.Diagnostics.Process> processes = System.Diagnostics.Process.GetProcesses().Where(process =>
+            var targetProcessNameList = IsServerType() ? new List<string> { "PluginServer", "PLUGIN~1" } : new List<string> { "VAST2" };
+            var processes = System.Diagnostics.Process.GetProcesses().Where(process =>
             {
-                return m_targetProcessNames.Contains(process.ProcessName);
+                return targetProcessNameList.Contains(process.ProcessName);
             }).ToList();
 
             foreach (var process in processes)
@@ -38,8 +19,5 @@ namespace PluginDeployTool.BasicCommands
                 process.WaitForExit();
             }
         }
-
-        private Mode m_mode = Mode.Server;
-        private List<string> m_targetProcessNames = new List<string> { "PluginServer", "PLUGIN~1", "notepad" };
     }
 }
