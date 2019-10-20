@@ -1,5 +1,6 @@
 ﻿using EnvDTE;
 using Microsoft.VisualStudio.Shell;
+using PluginDeployTool.OutputWindow;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,7 +15,7 @@ namespace PluginDeployTool.BasicCommands
             protected set;
         } = "";
         
-        public override void Execute()
+        public override bool Execute()
         {
             var outputFilePaths = GetProjectOutputFilePath();
 
@@ -28,6 +29,7 @@ namespace PluginDeployTool.BasicCommands
             });
 
             CheckFilePathExist();
+            return true;
         }
 
         private List<string> GetProjectOutputFilePath()

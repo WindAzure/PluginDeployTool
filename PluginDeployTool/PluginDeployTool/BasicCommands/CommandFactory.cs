@@ -9,11 +9,15 @@ namespace PluginDeployTool.DeployCommands
 {
     class CommandFactory
     {
-        public Command GenerateKillProcessCommand(Mode mode)
+        public Command GenerateKillProcessCommand(Mode mode, Dictionary<string, string> applicationInfo)
         {
             return new KillProcessCommand()
             {
                 Mode = mode,
+                VenderName = applicationInfo[DeployTarget.VENDER],
+                ProductName = applicationInfo[DeployTarget.PRODCUT],
+                ClientName = applicationInfo[DeployTarget.CLIENT],
+                ApplicationName = applicationInfo[DeployTarget.APPLICATION],
             };
         }
 
@@ -25,11 +29,15 @@ namespace PluginDeployTool.DeployCommands
             };
         }
 
-        public GetApplicationInstallPathCommand GenerateApplicationInstallPathCommand(Mode mode)
+        public GetApplicationInstallPathCommand GenerateApplicationInstallPathCommand(Mode mode, Dictionary<string, string> applicationInfo)
         {
             return new GetApplicationInstallPathCommand()
             {
                 Mode = mode,
+                VenderName = applicationInfo[DeployTarget.VENDER],
+                ProductName = applicationInfo[DeployTarget.PRODCUT],
+                ClientName = applicationInfo[DeployTarget.CLIENT],
+                ApplicationName = applicationInfo[DeployTarget.APPLICATION],
             };
         }
 
@@ -40,6 +48,18 @@ namespace PluginDeployTool.DeployCommands
                 SourceFileFullPath = sourceFileFullPath,
                 TargetFileFullPath = targetFileFullPath
             }; ;
+        }
+
+        public DeployPluginCommand GenerateDeployPluginCommand(Mode mode, Dictionary<string, string> deployTarget)
+        {
+            return new DeployPluginCommand
+            {
+                Mode = mode,
+                VenderName = deployTarget[DeployTarget.VENDER],
+                ProductName = deployTarget[DeployTarget.PRODCUT],
+                ClientName = deployTarget[DeployTarget.CLIENT],
+                ApplicationName = deployTarget[DeployTarget.APPLICATION],
+            };
         }
     }
 }

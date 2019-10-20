@@ -17,7 +17,7 @@ namespace PluginDeployTool.BasicCommands
             set;
         }
 
-        public override void Execute()
+        public override bool Execute()
         {
             try
             {
@@ -31,6 +31,7 @@ namespace PluginDeployTool.BasicCommands
             {
                 throw e;
             }
+            return true;
         }
     }
 }

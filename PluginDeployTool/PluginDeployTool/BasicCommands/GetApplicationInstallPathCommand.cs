@@ -3,7 +3,7 @@ using System;
 
 namespace PluginDeployTool.BasicCommands
 {
-    class GetApplicationInstallPathCommand : DualTypeCommand
+    class GetApplicationInstallPathCommand : BrandInfoCommand
     {
         public string ApplicationInstallDirectory
         {
@@ -11,21 +11,17 @@ namespace PluginDeployTool.BasicCommands
             private set;
         }
 
-        public override void Execute()
+        public override bool Execute()
         {
-            var applicationDirectory = Registry.GetValue("HKEY_LOCAL_MACHINE\\Software\\Wow6432Node\\VIVOTEK, Inc.\\VAST", "INSTALL_PATH", null) as string;
-            CheckDirectoryExist(applicationDirectory);
-
-            var postFixPath = IsServerType() ? @"Server/PluginServer/kernel" : @"Client/VAST2/plugin";
-            ApplicationInstallDirectory = System.IO.Path.Combine(applicationDirectory, postFixPath);
-        }
-
-        private void CheckDirectoryExist(string applicationDirectory)
-        {
-            if (applicationDirectory == null || applicationDirectory == "")
+            if (!(Registry.GetValue(@"HKEY_LOCAL_MACHINE\Software\Wow6432Node\" + VenderName + @", Inc.\"+ ProductName, "INSTALL_PATH", null) is string applicationDirectory) || 
+                applicationDirectory == "")
             {
-                throw new Exception("Registry not found match key!");
+                return false;
             }
+
+            var postFixPath = IsServerType() ? @"Server/PluginServer/kernel" : @"Client/" + ClientName + "/plugin";
+            ApplicationInstallDirectory = System.IO.Path.Combine(applicationDirectory, postFixPath);
+            return true;
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.ComponentModel.Design;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
+using PluginDeployTool.BasicCommands;
 using Task = System.Threading.Tasks.Task;
 
 namespace PluginDeployTool.DeployCommands
@@ -86,14 +87,18 @@ namespace PluginDeployTool.DeployCommands
         private void Execute(object sender, EventArgs e)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
-
-            var deployPluginCommand = new DeployPluginCommand
+            
+            var deployPluginHelper = new DeployPluginHelper();
+            var executeResultMessageList = deployPluginHelper.Run(Mode.Server);
+            foreach (var message in executeResultMessageList)
             {
-                Mode = BasicCommands.Mode.Server
-            };
-            deployPluginCommand.Execute();
-                       
-            VsShellUtilities.ShowMessageBox(this.package, deployPluginCommand.ExecuteResultMessage, "", OLEMSGICON.OLEMSGICON_INFO, OLEMSGBUTTON.OLEMSGBUTTON_OK, OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+                VsShellUtilities.ShowMessageBox(this.package, message, "", OLEMSGICON.OLEMSGICON_INFO, OLEMSGBUTTON.OLEMSGBUTTON_OK, OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+            }
+
+            if (executeResultMessageList.Count == 0)
+            {
+                VsShellUtilities.ShowMessageBox(this.package, "Registry not found any target software!", "", OLEMSGICON.OLEMSGICON_INFO, OLEMSGBUTTON.OLEMSGBUTTON_OK, OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+            }
         }
     }
 }
