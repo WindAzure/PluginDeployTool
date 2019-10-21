@@ -33,7 +33,7 @@ namespace PluginDeployTool.DeployCommands
             fileInfo.Refresh();
 
             var successMessage = string.Format("Copy {0} Success!", targetFilePath);
-            var failMessage = string.Format("Copy {0} Failed! ( File didn't changed )", targetFilePath);
+            var failMessage = string.Format("Copy {0} Success! ( File didn't changed )", targetFilePath);
             ExecuteResultMessage = DateTime.Compare(fileInitWriteDateTime, fileInfo.LastWriteTimeUtc) < 0 ? successMessage : failMessage;
             return true;
         }

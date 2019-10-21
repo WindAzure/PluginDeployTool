@@ -8,7 +8,7 @@ namespace PluginDeployTool.BasicCommands
 {
     public enum Mode { Client, Server }
 
-    abstract class DualTypeCommand : Command
+    abstract class DualTypeCommand : BasicCommand
     {
         public Mode Mode
         {

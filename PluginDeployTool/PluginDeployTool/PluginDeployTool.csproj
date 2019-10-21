@@ -54,20 +54,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="BasicCommands\BrandInfoCommand.cs" />
-    <Compile Include="BasicCommands\Command.cs" />
-    <Compile Include="BasicCommands\CopyFileCommand.cs" />
-    <Compile Include="BasicCommands\CommandFactory.cs" />
-    <Compile Include="BasicCommands\DualTypeCommand.cs" />
-    <Compile Include="BasicCommands\GetApplicationInstallPathCommand.cs" />
-    <Compile Include="BasicCommands\DeployPluginCommand.cs" />
-    <Compile Include="BasicCommands\GetProjectOutputPathCommand.cs" />
-    <Compile Include="BasicCommands\KillProcessCommand.cs" />
-    <Compile Include="DeployCommands\DeployClientPlugin.cs" />
-    <Compile Include="DeployCommands\DeployPluginHelper.cs" />
-    <Compile Include="DeployCommands\DeployTarget.cs" />
+    <Compile Include="Commands\BrandInfoCommand.cs" />
+    <Compile Include="Commands\BasicCommand.cs" />
+    <Compile Include="Commands\CopyFileCommand.cs" />
+    <Compile Include="Commands\CommandFactory.cs" />
+    <Compile Include="Commands\DualTypeCommand.cs" />
+    <Compile Include="Commands\GetApplicationInstallPathCommand.cs" />
+    <Compile Include="Commands\DeployPluginCommand.cs" />
+    <Compile Include="Commands\GetProjectOutputPathCommand.cs" />
+    <Compile Include="Commands\KillProcessCommand.cs" />
+    <Compile Include="DeployActions\DeployClientPlugin.cs" />
+    <Compile Include="DeployActions\DeployPluginHelper.cs" />
+    <Compile Include="DeployActions\DeployTarget.cs" />
     <Compile Include="DeployPluginPackage.cs" />
-    <Compile Include="DeployCommands\DeployServerPlugin.cs" />
+    <Compile Include="DeployActions\DeployServerPlugin.cs" />
     <Compile Include="OutputWindow\OutputWindowHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

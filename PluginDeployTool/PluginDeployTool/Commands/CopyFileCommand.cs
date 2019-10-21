@@ -3,7 +3,7 @@ using System.IO;
 
 namespace PluginDeployTool.BasicCommands
 {
-    class CopyFileCommand : Command
+    class CopyFileCommand : BasicCommand
     {
         public string SourceFileFullPath
         {

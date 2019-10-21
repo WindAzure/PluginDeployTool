@@ -9,7 +9,7 @@ namespace PluginDeployTool.DeployCommands
 {
     class CommandFactory
     {
-        public Command GenerateKillProcessCommand(Mode mode, Dictionary<string, string> applicationInfo)
+        public BasicCommand GenerateKillProcessCommand(Mode mode, Dictionary<string, string> applicationInfo)
         {
             return new KillProcessCommand()
             {
@@ -41,7 +41,7 @@ namespace PluginDeployTool.DeployCommands
             };
         }
 
-        public Command GenerateCopyFileCommand(string sourceFileFullPath, string targetFileFullPath)
+        public BasicCommand GenerateCopyFileCommand(string sourceFileFullPath, string targetFileFullPath)
         {
             return new CopyFileCommand
             {

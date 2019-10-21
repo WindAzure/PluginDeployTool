@@ -1,6 +1,6 @@
 ﻿namespace PluginDeployTool.BasicCommands
 {
-    abstract class Command
+    abstract class BasicCommand
     {
         public abstract bool Execute();
     }
