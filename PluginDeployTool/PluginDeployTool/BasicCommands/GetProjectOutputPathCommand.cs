@@ -14,7 +14,7 @@ namespace PluginDeployTool.BasicCommands
             get;
             protected set;
         } = "";
-        
+
         public override bool Execute()
         {
             var outputFilePaths = GetProjectOutputFilePath();
@@ -46,10 +46,12 @@ namespace PluginDeployTool.BasicCommands
                 var config = configManager.ActiveConfiguration;
                 foreach (OutputGroup group in config.OutputGroups)
                 {
-                    if (group.DisplayName == "Primary Output")
+                    for (var i = 0; i < group.FileCount; i++)
                     {
-                        foreach (string fileUriString in (Array)group.FileURLs)
+                        var fileName = ((Array)group.FileNames).GetValue(i) as string;
+                        if (Path.GetExtension(fileName) == ".dll")
                         {
+                            var fileUriString = ((Array)group.FileURLs).GetValue(i) as string;
                             var fileFullPath = fileUriString.Remove(0, 8);
                             outputFilePaths.Add(fileFullPath);
                         }
@@ -63,7 +65,7 @@ namespace PluginDeployTool.BasicCommands
         private bool IsMatched(string fileName)
         {
             if (fileName.Length < 7) return false;
-            
+
             var resultExtension = fileName.Substring(fileName.Length - 4, 4);
             var resultPreFix = fileName.Substring(0, 6);
             var resultPostFix = fileName.Substring(fileName.Length - 7, 3);
