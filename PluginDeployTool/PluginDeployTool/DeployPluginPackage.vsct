@@ -80,10 +80,10 @@
     </Bitmaps>
   </Commands>
   <KeyBindings>
-    <KeyBinding guid="guidDeployPluginPackageCmdSet" id="cmdidDeployServerPlugin" editor="guidVSStd97" key1="2" mod1="Control" />
+    <KeyBinding guid="guidDeployPluginPackageCmdSet" id="cmdidDeployServerPlugin" editor="guidVSStd97" key1="S" mod1="Alt" />
   </KeyBindings>
   <KeyBindings>
-    <KeyBinding guid="guidDeployPluginPackageCmdSet" id="cmdidDeployClientPlugin" editor="guidVSStd97" key1="3" mod1="Control" />
+    <KeyBinding guid="guidDeployPluginPackageCmdSet" id="cmdidDeployClientPlugin" editor="guidVSStd97" key1="C" mod1="Alt" />
   </KeyBindings>
 
   <Symbols>
